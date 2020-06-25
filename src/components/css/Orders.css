@@ -1,0 +1,59 @@
+.delete-btn {
+  position: absolute;
+  top: 5%;
+  left: 6%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: grey;
+  opacity: 0;
+  color: white;
+  font-size: 16px;
+  padding: 6px 16px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.75s;
+  border-radius: 5px;
+}
+
+.products {
+  position: relative;
+}
+
+.products:before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 0%;
+  width: 100%;
+  top: 0;
+  transition: height 0.5s ease-out;
+  background: linear-gradient(to top, transparent 0%, black 150%);
+}
+.products:hover:before {
+  height: 20%;
+}
+
+.products-img {
+  width: 100%;
+  height: auto;
+}
+.products:hover .delete-btn {
+  opacity: 100;
+}
+button:focus: {
+  outline: none;
+}
+@media only screen and (max-width: 800px) {
+  .products {
+    padding: 50px 0;
+  }
+  .delete-btn {
+    opacity: 100;
+    top: 13%;
+    left: 5%;
+  }
+  .products:before {
+    transition: unset;
+    background: unset;
+  }
+}

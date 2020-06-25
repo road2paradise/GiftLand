@@ -1,0 +1,20 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-giftlandorders-dev-201340-authRole",
+            "UnauthRoleArn": "arn:aws:iam::056331603841:role/amplify-giftlandorders-dev-201340-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::056331603841:role/amplify-giftlandorders-dev-201340-authRole",
+            "Region": "ap-southeast-2",
+            "DeploymentBucketName": "amplify-giftlandorders-dev-201340-deployment",
+            "UnauthRoleName": "amplify-giftlandorders-dev-201340-unauthRole",
+            "StackName": "amplify-giftlandorders-dev-201340",
+            "StackId": "arn:aws:cloudformation:ap-southeast-2:056331603841:stack/amplify-giftlandorders-dev-201340/73650bb0-b529-11ea-9976-06e689eb2714",
+            "AmplifyAppId": "d2i3ukq3e4dthr"
+        },
+        "categories": {
+            "auth": {
+                "giftlandorders94c211fc": {}
+            }
+        }
+    }
+}

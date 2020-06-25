@@ -1,0 +1,39 @@
+h1 {
+  font-size: 50px;
+  margin-top: 5%;
+}
+h2 {
+  font-size: 25px;
+  margin-right: 50%;
+}
+a {
+  color: black !important;
+  text-decoration: none !important;
+}
+.home-page-inner {
+  margin: auto;
+  background: #ffffff;
+  transition: all 1s;
+}
+.navigation-card-container {
+  width: 80%;
+  margin: 2.5% 28%;
+  display: grid;
+  grid-template-columns: 300px 300px;
+  grid-row: auto auto;
+  grid-column-gap: 100px;
+  grid-row-gap: 100px;
+}
+
+@media only screen and (max-width: 800px) {
+  .home-page {
+    margin-top: 20%;
+    height: 50%;
+  }
+
+  .navigation-card-container {
+    margin: 0px 0px;
+    display: block;
+    grid-template-columns: 100px;
+  }
+}

@@ -1,0 +1,36 @@
+.card {
+  text-decoration-color: black;
+  padding: 10px 10px;
+  margin-left: 20%;
+  margin-top: 5%;
+  transition: transform 0.5s;
+}
+.card:hover {
+  transform: scale(1.2);
+}
+a {
+  color: black;
+}
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+.card-header {
+  font-size: 30px;
+}
+.card-body {
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 740px) {
+  .card {
+    text-decoration-color: black;
+    padding: 10px 10px;
+    margin-left: 20%;
+    margin-top: 20%;
+    transition: transform 0.5s;
+  }
+  .card:hover {
+    transform: scale(1.2);
+  }
+}
