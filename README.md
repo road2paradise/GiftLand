@@ -1,20 +1,40 @@
-# This project was a demo project created for use for my dad and his business use.
+#GiftLand
 
-My dad runs a busy general store and often he finds it difficult to keep track of every single order
-(as the employees use almost 3 different forms of communication) for the store.
+My dad runs a busy retail store and utilises apps such as Whatsapp, Viber and other messaging systems to place orders for stock and take inventory.
 
-`I took it upon myself to build him an app that will hopefully satisfy everyone, in which I had the three main aims for this project.`
+The aim of this project is to create a platform where all of his employees (a mixture of devices and having limited access to high-speed internet) are 
+able to upload their photos to a centralised location where he is able to place online orders for the products without needing to filter through
+multiple avenues of order placements.
 
-1. An intuitive UI that allows him to filter through orders using various parameters in order to plan his daily orders.
-2. A backend that is capable of storing and serving images quickly.
-3. Be able to access in store and at home (No internet capability as this is a private application)
 
-## Progress Logs
+##Getting Started
+Under construction....
 
-### Placeholder.
+###Prerequisites
+Under construction....
 
-### 18/06/2020
+###Installing
+Under construction....
 
-Implemented basic filtering functionality using .filer() and .sort functions -
 
-### To Be filled in...
+##Tests
+Under construction....
+
+##Deployment
+Under construction....
+
+##Built With
+Under construction....
+
+##Contributing
+Under construction....
+
+##Versioning
+Under construction....
+
+##Authors
+Kenny Nguyen - Initial release.
+
+##Acknowledgments
+Under construction....
+
