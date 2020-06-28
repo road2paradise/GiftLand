@@ -1,4 +1,4 @@
-#GiftLand
+# GiftLand
 
 My dad runs a busy retail store and utilises apps such as Whatsapp, Viber and other messaging systems to place orders for stock and take inventory.
 
@@ -7,34 +7,34 @@ able to upload their photos to a centralised location where he is able to place 
 multiple avenues of order placements.
 
 
-##Getting Started
+## Getting Started
 Under construction....
 
-###Prerequisites
+### Prerequisites
 Under construction....
 
-###Installing
+### Installing
 Under construction....
 
 
-##Tests
+## Tests
 Under construction....
 
-##Deployment
+## Deployment
 Under construction....
 
-##Built With
+## Built With
 Under construction....
 
-##Contributing
+## Contributing
 Under construction....
 
-##Versioning
+## Versioning
 Under construction....
 
-##Authors
+## Authors
 Kenny Nguyen - Initial release.
 
-##Acknowledgments
+## Acknowledgments
 Under construction....
 
