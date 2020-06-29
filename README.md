@@ -3,7 +3,8 @@ My dad runs a busy retail store and utilises apps such as Whatsapp, Viber and so
 
 This web app is hosted as a local webserver (Apache on Raspberry pi) at the store where employees will upload their photos to the cloud (AWS - S3) through the web application. The web app is also hosted at home where my dad is able to access all uploaded photos.
 
-Main features currently: 
+# Main features currently: 
+
 ## Adding new orders and viewing them.
 <img src="/public/gifs/gL2.gif?raw=true">
 
