@@ -6,8 +6,10 @@ I approached this problem with a solution of a web app / phone app in mind to ad
 This web app is hosted as a local webserver (Apache on Raspberry pi) at the store where employees will upload their photos to the cloud (AWS - S3) through the web application.
 The web app is also hosted at home where my dad is able to access all uploaded photos.
 
-![](https://gfycat.com/rigiddisgustingasiaticmouflon.gif)
+The app currently has two routes. `Get` all products in the S3 bucket and to `Put` new images into the S3 bucket. `Delete` is also available on the All Orders page.
 
+
+![](http://gfycat.com/rigiddisgustingasiaticmouflon.gif)
 
 
 ## Available scripts.
