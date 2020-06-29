@@ -6,11 +6,8 @@ I approached this problem with a solution of a web app / phone app in mind to ad
 This web app is hosted as a local webserver (Apache on Raspberry pi) at the store where employees will upload their photos to the cloud (AWS - S3) through the web application.
 The web app is also hosted at home where my dad is able to access all uploaded photos.
 
-## Initial Feedback
+![](https://gfycat.com/rigiddisgustingasiaticmouflon.gif)
 
-1. Push notifications / SMS notifications where a link to the stored S3 image for urgent orders.
-2. Interactive UI - currently dull.
-3. Better feedback when users upload - maybe include a list / number of files uploaded?
 
 
 ## Available scripts.
@@ -25,11 +22,19 @@ Builds the app for production to the `build` folder.
 ### `npm run test`
 Under construction.
 
+
 ## Project Status
-Continued trial and feedback.
+Currently on trial and pending feedback.
 
 ### 23.06.2020
 Initial release and trial.
+
+## Initial Feedback
+1. Push notifications / SMS notifications where a link to the stored S3 image for urgent orders.
+2. Interactive UI - currently dull.
+3. Better feedback when users upload - maybe include a list / number of files uploaded?
+
+
 
 ## Authors
 Kenny Nguyen - Initial release.
