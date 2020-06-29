@@ -13,33 +13,27 @@ The web app is also hosted at home where my dad is able to access all uploaded p
 3. Better feedback when users upload - maybe include a list / number of files uploaded?
 
 
-## Getting Started
-Under construction....
+## Available scripts.
+Ensure that the correct AWS credentials are avaiable in the `aws.exports` file in the `src` folder.
 
-### Prerequisites
-Under construction....
+### `npm run start` 
+Runs the app in development mode. Uses port 3000 as the default. The page will also reload if you make edits.
 
-### Installing
-Under construction....
+### `npm run build`
+Builds the app for production to the `build` folder.
 
-## Tests
-Under construction....
+### `npm run test`
+Under construction.
 
-## Deployment
-Under construction....
+## Project Status
+Continued trial and feedback.
 
-## Built With
-Under construction....
-
-## Contributing
-Under construction....
-
-## Versioning
-Under construction....
+### 23.06.2020
+Initial release and trial.
 
 ## Authors
 Kenny Nguyen - Initial release.
 
 ## Acknowledgments
-Under construction....
+Toan Nguyen - for giving me inspiration on the app idea.
 
