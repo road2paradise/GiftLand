@@ -14,6 +14,12 @@
         "categories": {
             "auth": {
                 "giftlandorders94c211fc": {}
+            },
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d2i3ukq3e4dthr",
+                    "type": "manual"
+                }
             }
         }
     }

@@ -13,6 +13,7 @@ export const NewOrder = () => {
   const [loading, setLoading] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [previewImageUrl, setPreviewImageUrl] = useState([]);
+  const [comments, setComments] = useState([]);
 
   async function handleImages(e) {
     const options = {
@@ -28,6 +29,7 @@ export const NewOrder = () => {
       for (var x = 0; x < file.length; x++) {
         await resArr.push(URL.createObjectURL(file[x]));
         compressedFile[x] = await imageCompression(file[x], options);
+        console.log("Photos have been compressed");
       }
       setPreviewImageUrl(resArr);
       setPhotos(compressedFile);
@@ -35,6 +37,11 @@ export const NewOrder = () => {
     } catch (err) {
       console.log("error uploading images.", err);
     }
+  }
+  function handleComments(e, index) {
+    let newArr = [...comments];
+    newArr[index] = e.target.value;
+    setComments(newArr);
   }
 
   async function addPhoto() {
@@ -54,17 +61,32 @@ export const NewOrder = () => {
 
   async function uploadPhotosAsync() {
     try {
+      var startTime, endTime;
+      startTime = new Date();
       var resArr = [];
-      await asyncForEach(photos, async (e) => {
+      console.log(photos);
+      await asyncForEach(photos, async (e, index) => {
         await Storage.put(`${Date.now().toLocaleString()}`, e, {
           contentType: "image/jpeg",
-        }).then((res) => resArr.push(res));
+          metadata: {
+            tagging: `${comments[index]}`,
+          },
+        })
+          .then((res) => resArr.push(res))
+          .then(console.log("Uploaded."));
       });
       Swal.fire({
         title: "Success!",
-        text: `Successfully uploaded photos!`,
+        text: `Successfully ${resArr.length} uploaded photos!`,
         icon: "success",
       });
+      endTime = new Date();
+
+      var timeDiff = endTime - startTime;
+      timeDiff /= 1000;
+
+      console.log(timeDiff + "seconds");
+
       setLoading(false);
       setPreviewImageUrl([]);
       setPhotos([]);
@@ -91,12 +113,6 @@ export const NewOrder = () => {
               />
             </Form.Group>
           </Form>
-          {/* <input
-            type="file"
-            multiple
-            accept="image/png, image/jpeg"
-            onChange={handleImages}
-          /> */}
           {photos.length !== 0 ? (
             <Button
               className="order-preview-submit-btn"
@@ -109,8 +125,17 @@ export const NewOrder = () => {
 
           <div className="product-image-wrapper">
             {previewImageUrl.length >= 1
-              ? previewImageUrl.map((e) => {
-                  return <ModalImage small={e} large={e} key={e.key} />;
+              ? previewImageUrl.map((e, index) => {
+                  return (
+                    <>
+                      <ModalImage small={e} large={e} key={e.key} />
+                      <Form.Control
+                        as="textarea"
+                        placeholder="Enter comments"
+                        onChange={(e) => handleComments(e, index)}
+                      />
+                    </>
+                  );
                 })
               : null}
           </div>

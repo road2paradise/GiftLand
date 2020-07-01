@@ -19,6 +19,35 @@ export const Orders = () => {
     },
     buttonsStyling: false,
   });
+  function dayOfWeekAsString(dayIndex) {
+    return (
+      [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ][dayIndex] || ""
+    );
+  }
+
+  function formatTime(time) {
+    var hours = time.getHours();
+    var minutes = time.getMinutes();
+    var seconds = time.getSeconds();
+    var AmOrPm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12;
+    if (minutes < 10) {
+      if (seconds < 10) {
+        seconds = seconds.toString().padStart(2, "0");
+      }
+      minutes = minutes.toString().padStart(2, "0");
+    }
+    var formattedTime = `${hours}:${minutes}:${seconds} ${AmOrPm}`;
+    return formattedTime;
+  }
 
   async function asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {
@@ -26,7 +55,6 @@ export const Orders = () => {
     }
   }
   function sortPhotosByTime(photos) {
-    console.log("Sorting photos..");
     return photos.sort(function (a, b) {
       return (
         new Date(b.lastModified).getTime() - new Date(a.lastModified).getTime()
@@ -37,10 +65,20 @@ export const Orders = () => {
     photos = sortPhotosByTime(photos);
     try {
       await asyncForEach(photos, async (e) => {
-        await Storage.get(`${e.key}`).then((res) => (e.imageFetch = `${res}`));
+        await Storage.get(`${e.key}`, { download: true }).then((res) => {
+          var utcSeconds = parseInt(e.key.replace(/,/g, ""), 10) / 1000;
+          var d = new Date(0);
+          d.setUTCSeconds(utcSeconds);
+          e.uploadedTime = `${dayOfWeekAsString(
+            d.getDay()
+          )} ${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${formatTime(
+            d
+          )}`;
+          e.imageFetch = URL.createObjectURL(res.Body);
+          e.Metadata = res.Metadata.tagging;
+          setPhotos(photos.concat(e));
+        });
       });
-      console.log(photos);
-      setPhotos(photos);
     } catch (err) {
       console.log("Error in downloading files", err);
     }
@@ -62,7 +100,7 @@ export const Orders = () => {
             "Your file has been deleted.",
             "success"
           );
-          Storage.remove(`${fileName}`).then((res) => console.log(res));
+          Storage.remove(`${fileName}`).catch((err) => console.log(err));
           setPhotos(
             photos.filter(function (element) {
               return element.key !== fileName;
@@ -74,29 +112,33 @@ export const Orders = () => {
   return (
     <div>
       <div className="product-image-wrapper">
-        {photos.length >= 1
-          ? photos.map((e, index) => {
-              return (
-                <>
-                  <div className="products">
-                    <ModalImage
-                      className="products-img"
-                      small={e.imageFetch}
-                      large={e.imageFetch}
-                      key={`${e.key}`}
-                    />
-                    <button
-                      className="delete-btn"
-                      value={`${e.key}`}
-                      onClick={handleDelete}
-                    >
-                      x
-                    </button>
-                  </div>
-                </>
-              );
-            })
-          : null}
+        {photos.length >= 1 ? (
+          photos.map((e, index) => {
+            return (
+              <>
+                <div className="products">
+                  <ModalImage
+                    className="products-img"
+                    small={e.imageFetch}
+                    large={e.imageFetch}
+                    key={`${e.key}`}
+                  />
+                  <button
+                    className="delete-btn"
+                    value={`${e.key}`}
+                    onClick={handleDelete}
+                  >
+                    x
+                  </button>
+                  {e.Metadata ? <h3>{`${e.Metadata}`}</h3> : null}
+                  <span> {e.uploadedTime}</span>
+                </div>
+              </>
+            );
+          })
+        ) : (
+          <h1> HELLO WORLD</h1>
+        )}
       </div>
     </div>
   );
