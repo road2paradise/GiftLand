@@ -22,13 +22,13 @@ export const Orders = () => {
   function dayOfWeekAsString(dayIndex) {
     return (
       [
+        "Sunday",
         "Monday",
         "Tuesday",
         "Wednesday",
         "Thursday",
         "Friday",
         "Saturday",
-        "Sunday",
       ][dayIndex] || ""
     );
   }
@@ -40,10 +40,10 @@ export const Orders = () => {
     var AmOrPm = hours >= 12 ? "PM" : "AM";
     hours = hours % 12 || 12;
     if (minutes < 10) {
-      if (seconds < 10) {
-        seconds = seconds.toString().padStart(2, "0");
-      }
       minutes = minutes.toString().padStart(2, "0");
+    }
+    if (seconds < 10) {
+      seconds = seconds.toString().padStart(2, "0");
     }
     var formattedTime = `${hours}:${minutes}:${seconds} ${AmOrPm}`;
     return formattedTime;
@@ -69,11 +69,9 @@ export const Orders = () => {
           var utcSeconds = parseInt(e.key.replace(/,/g, ""), 10) / 1000;
           var d = new Date(0);
           d.setUTCSeconds(utcSeconds);
-          e.uploadedTime = `${dayOfWeekAsString(
-            d.getDay()
-          )} ${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${formatTime(
-            d
-          )}`;
+          e.uploadedTime = `${dayOfWeekAsString(d.getDay())} ${d.getDate()}/${
+            d.getMonth() + 1
+          }/${d.getFullYear()} ${formatTime(d)}`;
           e.imageFetch = URL.createObjectURL(res.Body);
           e.Metadata = res.Metadata.tagging;
           setPhotos(photos.concat(e));
@@ -112,33 +110,33 @@ export const Orders = () => {
   return (
     <div>
       <div className="product-image-wrapper">
-        {photos.length >= 1 ? (
-          photos.map((e, index) => {
-            return (
-              <>
-                <div className="products">
-                  <ModalImage
-                    className="products-img"
-                    small={e.imageFetch}
-                    large={e.imageFetch}
-                    key={`${e.key}`}
-                  />
-                  <button
-                    className="delete-btn"
-                    value={`${e.key}`}
-                    onClick={handleDelete}
-                  >
-                    x
-                  </button>
-                  {e.Metadata ? <h3>{`${e.Metadata}`}</h3> : null}
-                  <span> {e.uploadedTime}</span>
-                </div>
-              </>
-            );
-          })
-        ) : (
-          <h1> HELLO WORLD</h1>
-        )}
+        {photos.length >= 1
+          ? photos.map((e, index) => {
+              return (
+                <>
+                  <div className="products">
+                    <ModalImage
+                      className="products-img"
+                      small={e.imageFetch}
+                      large={e.imageFetch}
+                      key={`${e.key}`}
+                    />
+                    <button
+                      className="delete-btn"
+                      value={`${e.key}`}
+                      onClick={handleDelete}
+                    >
+                      x
+                    </button>
+                    {e.Metadata && e.Metadata !== "undefined" ? (
+                      <h3>{`${e.Metadata}`}</h3>
+                    ) : null}
+                    <span> {e.uploadedTime}</span>
+                  </div>
+                </>
+              );
+            })
+          : null}
       </div>
     </div>
   );
