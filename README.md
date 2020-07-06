@@ -33,8 +33,10 @@ Currently on trial and pending feedback.
 
 ### 6.07.2020
 
-1. Working on infinite scrolling and pagination to reduce # of get requests made to AWS S3 when page is loaded - rather than loading everything in the bucket.
+Added additional features:
 
+1. Infinite scrolling - to reduce the amount of get requests if users dont need to scroll through every image. 
+2. Added user feedback on number of uploaded files.
 
 ### 1.07.2020
 
