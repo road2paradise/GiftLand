@@ -1,14 +1,27 @@
 import React, { useState, useEffect } from "react";
 import ModalImage from "react-modal-image";
 import Swal from "sweetalert2";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { Storage } from "aws-amplify";
 
 import "./css/Orders.css";
 
 export const Orders = () => {
   const [photos, setPhotos] = useState([]);
+  const [loading, setLoading] = useState(false);
+  var count = 0;
+  var photoArray = [];
   useEffect(() => {
-    Storage.list("").then((res) => fetchPhotos(res));
+    Storage.list("").then((res) => {
+      fetchPhotos(sortPhotosByTime(res), count);
+      photoArray = sortPhotosByTime(res);
+    });
+    // eslint-disable-next-line
+  }, []);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+
     // eslint-disable-next-line
   }, []);
 
@@ -61,10 +74,13 @@ export const Orders = () => {
       );
     });
   }
-  async function fetchPhotos(photos) {
-    photos = sortPhotosByTime(photos);
-    try {
-      await asyncForEach(photos, async (e) => {
+  async function fetchPhotos(photoArray, count) {
+    console.log(count);
+    if (count >= photoArray.length) {
+      setLoading(false);
+      return;
+    } else {
+      await asyncForEach(photoArray.slice(count, count + 16), async (e) => {
         await Storage.get(`${e.key}`, { download: true }).then((res) => {
           var utcSeconds = parseInt(e.key.replace(/,/g, ""), 10) / 1000;
           var d = new Date(0);
@@ -74,11 +90,9 @@ export const Orders = () => {
           }/${d.getFullYear()} ${formatTime(d)}`;
           e.imageFetch = URL.createObjectURL(res.Body);
           e.Metadata = res.Metadata.tagging;
-          setPhotos(photos.concat(e));
+          setPhotos((photos) => [...photos, e]);
         });
       });
-    } catch (err) {
-      console.log("Error in downloading files", err);
     }
   }
   function handleDelete(e) {
@@ -106,6 +120,22 @@ export const Orders = () => {
           );
         } else return null;
       });
+  }
+
+  function handleScroll() {
+    // infinite scroll using window features.
+    if (
+      window.innerHeight + document.documentElement.scrollTop >=
+      document.documentElement.offsetHeight - 25
+    ) {
+      setLoading(true);
+      count = count + 16;
+
+      fetchPhotos(photoArray, count);
+      return;
+    } else {
+      return;
+    }
   }
   return (
     <div>
@@ -137,6 +167,7 @@ export const Orders = () => {
               );
             })
           : null}
+        {loading ? <h1> Loading.... </h1> : null}
       </div>
     </div>
   );

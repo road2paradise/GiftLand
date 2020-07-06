@@ -26,6 +26,7 @@ body,
 html,
 #root {
   width: 100%;
+  -webkit-user-drag: none;
 }
 @media only screen and (max-width: 800px) {
   .navbar-nav {
