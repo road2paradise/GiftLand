@@ -40,7 +40,8 @@
 .products:hover .delete-btn {
   opacity: 100;
 }
-button:focus: {
+
+button:focus {
   outline: none;
 }
 @media only screen and (max-width: 800px) {

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ModalImage from "react-modal-image";
 import Swal from "sweetalert2";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { Storage } from "aws-amplify";
 
 import "./css/Orders.css";
@@ -10,7 +9,7 @@ export const Orders = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
   var count = 0;
-  var photoArray = [];
+  var photoArray = sortPhotosByTime(res);
   useEffect(() => {
     Storage.list("").then((res) => {
       fetchPhotos(sortPhotosByTime(res), count);
