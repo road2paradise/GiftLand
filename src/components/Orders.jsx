@@ -9,10 +9,11 @@ export const Orders = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
   var count = 0;
-  var photoArray = sortPhotosByTime(res);
+  var photoArray = [];
   useEffect(() => {
     Storage.list("").then((res) => {
       fetchPhotos(sortPhotosByTime(res), count);
+      // eslint-disable-next-line
       photoArray = sortPhotosByTime(res);
     });
     // eslint-disable-next-line
