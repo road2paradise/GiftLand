@@ -31,6 +31,11 @@ Under construction.
 
 Currently on trial and pending feedback.
 
+### 6.07.2020
+
+1. Working on infinite scrolling and pagination to reduce # of get requests made to AWS S3 when page is loaded - rather than loading everything in the bucket.
+
+
 ### 1.07.2020
 
 Added additional features:
@@ -45,9 +50,10 @@ Initial release and trial.
 
 # Initial Feedback
 
-1. Push notifications / SMS notifications where a link to the stored S3 image for urgent orders.
-2. Interactive UI - currently dull.
-3. Better feedback when users upload - maybe include a list / number of files uploaded?
+1. Push notifications / SMS notifications where a link to the stored S3 image for urgent orders. 
+2. Interactive UI.
+3. Better feedback when users upload - maybe include a list / number of files uploaded? - Completed.
+
 
 # Authors
 
