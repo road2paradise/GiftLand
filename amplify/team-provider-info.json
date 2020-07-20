@@ -20,6 +20,9 @@
                     "appId": "d2i3ukq3e4dthr",
                     "type": "manual"
                 }
+            },
+            "function": {
+                "S3Trigger1fe4a9f6": {}
             }
         }
     }
