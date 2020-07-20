@@ -97,6 +97,7 @@ export const NewOrder = () => {
 
       setLoading(false);
       setSubmit(false);
+      setPercentage([]);
       setPreviewImageUrl([]);
       setPhotos([]);
     } catch (err) {
