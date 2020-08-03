@@ -33,11 +33,6 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .product-image-wrapper {
-    display: grid;
-    grid-template-columns: 300px;
-    grid-row-gap: 100px;
-  }
   .form-control-file {
     margin-left: 20%;
     width: 60% !important;
