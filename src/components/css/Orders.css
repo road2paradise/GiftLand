@@ -48,6 +48,14 @@ button:focus {
   .product {
     padding: 50px 0;
   }
+  .product-image-wrapper {
+    display: grid;
+    grid-template-columns: 150px 150px;
+    margin-left: 5%;
+    grid-row-gap: 0px;
+    column-gap: 50px;
+  }
+
   .delete-btn {
     opacity: 100;
     top: 13%;
