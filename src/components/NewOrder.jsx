@@ -106,11 +106,7 @@ export const NewOrder = () => {
           </h1>
           <Form>
             <Form.Group>
-              <Form.File
-                onChange={handleImages}
-                label="Upload Images"
-                multiple
-              />
+              <Form.File onChange={handleImages} multiple />
             </Form.Group>
           </Form>
           {photos.length !== 0 ? (

@@ -1,5 +1,5 @@
 .product-image-wrapper {
-  margin: 2.5% 10%;
+  margin: 5% 10%;
 
   display: grid;
   grid-template-columns: 300px 300px 300px 300px;
@@ -22,6 +22,10 @@
 }
 .order-page-wrapper h1 {
   margin-top: 2%;
+}
+.form-control-file,
+.form-control-range {
+  width: 20% !important;
 }
 
 @media only screen and (max-width: 800px) {
