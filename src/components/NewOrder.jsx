@@ -92,11 +92,7 @@ export const NewOrder = () => {
             </Form.Group>
           </Form>
           {photos.length !== 0 ? (
-            <Button
-              className="order-preview-submit-btn"
-              variant="success"
-              onClick={addPhoto}
-            >
+            <Button className="submit-btn" variant="success" onClick={addPhoto}>
               Submit Order
             </Button>
           ) : null}
@@ -110,6 +106,7 @@ export const NewOrder = () => {
                         as="textarea"
                         placeholder="Enter comments"
                         onChange={(e) => handleComments(e, index)}
+                        key={e.key}
                       />
                     </>
                   );
