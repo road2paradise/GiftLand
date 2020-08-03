@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
-import ModalImage from "react-modal-image";
+import {
+  formatTime,
+  sortPhotosByTime,
+  asyncForEach,
+} from "../utils/OrderUtils";
 import Swal from "sweetalert2";
 import { Storage } from "aws-amplify";
+import ProductImage from "./Product";
 
 import "./css/Orders.css";
 
 export const Orders = () => {
   const [photos, setPhotos] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [total, setTotal] = useState(0);
   var count = 0;
   var photoArray = [];
   useEffect(() => {
@@ -15,13 +20,13 @@ export const Orders = () => {
       fetchPhotos(sortPhotosByTime(res), count);
       // eslint-disable-next-line
       photoArray = sortPhotosByTime(res);
+      setTotal(photoArray.length);
     });
     // eslint-disable-next-line
   }, []);
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-
     // eslint-disable-next-line
   }, []);
 
@@ -32,62 +37,14 @@ export const Orders = () => {
     },
     buttonsStyling: false,
   });
-  function dayOfWeekAsString(dayIndex) {
-    return (
-      [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-      ][dayIndex] || ""
-    );
-  }
 
-  function formatTime(time) {
-    var hours = time.getHours();
-    var minutes = time.getMinutes();
-    var seconds = time.getSeconds();
-    var AmOrPm = hours >= 12 ? "PM" : "AM";
-    hours = hours % 12 || 12;
-    if (minutes < 10) {
-      minutes = minutes.toString().padStart(2, "0");
-    }
-    if (seconds < 10) {
-      seconds = seconds.toString().padStart(2, "0");
-    }
-    var formattedTime = `${hours}:${minutes}:${seconds} ${AmOrPm}`;
-    return formattedTime;
-  }
-
-  async function asyncForEach(array, callback) {
-    for (let index = 0; index < array.length; index++) {
-      await callback(array[index], index, array);
-    }
-  }
-  function sortPhotosByTime(photos) {
-    return photos.sort(function (a, b) {
-      return (
-        new Date(b.lastModified).getTime() - new Date(a.lastModified).getTime()
-      );
-    });
-  }
   async function fetchPhotos(photoArray, count) {
-    console.log(count);
     if (count >= photoArray.length) {
-      setLoading(false);
       return;
     } else {
-      await asyncForEach(photoArray.slice(count, count + 16), async (e) => {
+      await asyncForEach(photoArray.slice(count, count + 32), async (e) => {
         await Storage.get(`${e.key}`, { download: true }).then((res) => {
-          var utcSeconds = parseInt(e.key.replace(/,/g, ""), 10) / 1000;
-          var d = new Date(0);
-          d.setUTCSeconds(utcSeconds);
-          e.uploadedTime = `${dayOfWeekAsString(d.getDay())} ${d.getDate()}/${
-            d.getMonth() + 1
-          }/${d.getFullYear()} ${formatTime(d)}`;
+          e.uploadedTime = formatTime(e.key);
           e.imageFetch = URL.createObjectURL(res.Body);
           e.Metadata = res.Metadata.tagging;
           setPhotos((photos) => [...photos, e]);
@@ -118,18 +75,15 @@ export const Orders = () => {
               return element.key !== fileName;
             })
           );
+          setTotal(total - 1);
         } else return null;
       });
   }
 
   function handleScroll() {
     // infinite scroll using window features.
-    if (
-      window.innerHeight + document.documentElement.scrollTop >=
-      document.documentElement.offsetHeight - 25
-    ) {
-      setLoading(true);
-      count = count + 16;
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+      count = count + 32;
 
       fetchPhotos(photoArray, count);
       return;
@@ -139,36 +93,37 @@ export const Orders = () => {
   }
   return (
     <div>
-      <div className="product-image-wrapper">
-        {photos.length >= 1
-          ? photos.map((e, index) => {
+      {photos.length >= 1 ? (
+        <>
+          <h2> Total number of orders: {total}</h2>
+          <div className="product-image-wrapper">
+            {photos.map((e) => {
               return (
                 <>
-                  <div className="products">
-                    <ModalImage
-                      className="products-img"
-                      small={e.imageFetch}
-                      large={e.imageFetch}
-                      key={`${e.key}`}
+                  <div className="product" key={`${e.key}`}>
+                    <ProductImage
+                      smallImage={e.imageFetch}
+                      largeImage={e.imageFetch}
                     />
                     <button
                       className="delete-btn"
                       value={`${e.key}`}
+                      key={`${e.key + 5}`}
                       onClick={handleDelete}
                     >
                       x
                     </button>
                     {e.Metadata && e.Metadata !== "undefined" ? (
-                      <h3>{`${e.Metadata}`}</h3>
+                      <h3 key={`${e.key + 11}`}>{`${e.Metadata}`}</h3>
                     ) : null}
                     <span> {e.uploadedTime}</span>
                   </div>
                 </>
               );
-            })
-          : null}
-        {loading ? <h1> Loading.... </h1> : null}
-      </div>
+            })}
+          </div>
+        </>
+      ) : null}
     </div>
   );
 };
