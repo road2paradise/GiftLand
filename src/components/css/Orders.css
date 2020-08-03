@@ -57,6 +57,12 @@ button:focus {
     transition: unset;
     background: unset;
   }
+  h2 {
+    font-size: 24px !important;
+    width: 90% !important;
+    margin-left: 10% !important;
+    margin-top: 10% !important;
+  }
 }
 .swal2-title {
   display: block !important;
