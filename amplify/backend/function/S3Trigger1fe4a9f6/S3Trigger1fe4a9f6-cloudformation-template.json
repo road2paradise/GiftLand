@@ -60,7 +60,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-giftlandorders-dev-201340-deployment",
-					"S3Key": "amplify-builds/S3Trigger1fe4a9f6-4f556772417878446850-build.zip"
+					"S3Key": "amplify-builds/S3Trigger1fe4a9f6-53435a4c4d39392b4147-build.zip"
 				}
 			}
 		},

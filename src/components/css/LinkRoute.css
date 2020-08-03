@@ -1,0 +1,15 @@
+.nav-brand {
+  font-size: 24px;
+}
+.nav-link {
+  font-size: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  .nav-brand {
+    font-size: 20px;
+  }
+  .nav-link {
+    font-size: 16px;
+  }
+}

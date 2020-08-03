@@ -69,13 +69,13 @@ button:focus {
     font-size: 24px !important;
     width: 90% !important;
     margin-left: 10% !important;
-    margin-top: 10% !important;
   }
 }
 .swal2-title {
   display: block !important;
 }
 h2 {
-  margin-left: 35%;
+  margin-left: 40%;
   width: 50%;
+  margin-top: 2% !important;
 }
