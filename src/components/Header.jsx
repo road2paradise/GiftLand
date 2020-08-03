@@ -1,24 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import LinkRoute from "./LinkRoute";
+
 import "./css/Header.css";
 
 export const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container">
-        <Link className="navbar-brand" to={"/"}>
-          GiftLand
-        </Link>
+        <LinkRoute className="nav-brand" label="GiftLand" linkTo="/" />
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <Link className="nav-link" to={"/orders"}>
-              All Orders
-            </Link>
+            <LinkRoute
+              className="nav-link"
+              label="All Orders"
+              linkTo="/orders"
+            />
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to={"/placeorder"}>
-              Place new order
-            </Link>
+            <LinkRoute
+              className="nav-link"
+              label="All Orders"
+              linkTo="/placeorder"
+            />
           </li>
         </ul>
       </div>
