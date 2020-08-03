@@ -6,17 +6,14 @@ import Form from "react-bootstrap/Form";
 import ModalImage from "react-modal-image";
 import imageCompression from "browser-image-compression";
 import { Storage } from "aws-amplify";
-import ProgressBar from "react-bootstrap/ProgressBar";
 
 import "./css/NewOrder.css";
 
 export const NewOrder = () => {
   const [loading, setLoading] = useState(false);
-  const [submit, setSubmit] = useState(false);
   const [photos, setPhotos] = useState([]);
   const [previewImageUrl, setPreviewImageUrl] = useState([]);
   const [comments, setComments] = useState([]);
-  const [percentage, setPercentage] = useState([]);
 
   async function handleImages(e) {
     const options = {
@@ -49,7 +46,6 @@ export const NewOrder = () => {
 
   async function addPhoto() {
     try {
-      setSubmit(true);
       setLoading(true);
       uploadPhotosAsync();
     } catch (err) {
@@ -75,12 +71,6 @@ export const NewOrder = () => {
           metadata: {
             tagging: `${comments[index]}`,
           },
-          progressCallback(progress) {
-            setPercentage((percentage) => [
-              ...percentage,
-              progress.loaded / progress.total,
-            ]);
-          },
         }).then((res) => resArr.push(res));
       });
       Swal.fire({
@@ -89,8 +79,6 @@ export const NewOrder = () => {
         icon: "success",
       });
       setLoading(false);
-      setSubmit(false);
-      setPercentage([]);
       setPreviewImageUrl([]);
       setPhotos([]);
     } catch (err) {
@@ -121,7 +109,6 @@ export const NewOrder = () => {
               Submit Order
             </Button>
           ) : null}
-
           <div className="product-image-wrapper">
             {previewImageUrl.length >= 1
               ? previewImageUrl.map((e, index) => {
@@ -141,23 +128,10 @@ export const NewOrder = () => {
         </>
       ) : (
         <>
-          {submit ? (
-            <div className="progress-bar-container">
-              {percentage.map((e, index) => {
-                return (
-                  <>
-                    <h2>Image {index}</h2>
-                    <ProgressBar animated now={e * 100} label={`${e * 100}%`} />
-                  </>
-                );
-              })}
-            </div>
-          ) : (
-            <div>
-              <Spinner animation="border" role="status" />
-              <h1> Loading...</h1>
-            </div>
-          )}
+          <div>
+            <Spinner animation="border" role="status" />
+            <h1> Loading...</h1>
+          </div>
         </>
       )}
     </div>
