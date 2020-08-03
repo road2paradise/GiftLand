@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { asyncForEach } from "../utils/OrderUtils";
 import Swal from "sweetalert2";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import ModalImage from "react-modal-image";
+import Product from "./Product";
+
 import imageCompression from "browser-image-compression";
 import { Storage } from "aws-amplify";
 
@@ -29,7 +31,6 @@ export const NewOrder = () => {
       for (var x = 0; x < file.length; x++) {
         await resArr.push(URL.createObjectURL(file[x]));
         compressedFile[x] = await imageCompression(file[x], options);
-        console.log("Photos have been compressed");
       }
       setPreviewImageUrl(resArr);
       setPhotos(compressedFile);
@@ -43,7 +44,6 @@ export const NewOrder = () => {
     newArr[index] = e.target.value;
     setComments(newArr);
   }
-
   async function addPhoto() {
     try {
       setLoading(true);
@@ -53,18 +53,9 @@ export const NewOrder = () => {
     }
   }
 
-  async function asyncForEach(array, callback) {
-    for (let index = 0; index < array.length; index++) {
-      await callback(array[index], index, array);
-    }
-  }
-
   async function uploadPhotosAsync() {
     try {
-      // var startTime, endTime;
-      // startTime = new Date();
       var resArr = [];
-
       await asyncForEach(photos, async (e, index) => {
         await Storage.put(`${Date.now().toLocaleString()}`, e, {
           contentType: "image/jpeg",
@@ -114,7 +105,7 @@ export const NewOrder = () => {
               ? previewImageUrl.map((e, index) => {
                   return (
                     <>
-                      <ModalImage small={e} large={e} key={e.key} />
+                      <Product smallImage={e} largeImage={e} key={e.key} />
                       <Form.Control
                         as="textarea"
                         placeholder="Enter comments"
