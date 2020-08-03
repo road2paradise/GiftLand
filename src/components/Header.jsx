@@ -19,7 +19,7 @@ export const Header = () => {
           <li className="nav-item">
             <LinkRoute
               className="nav-link"
-              label="All Orders"
+              label="Place Order"
               linkTo="/placeorder"
             />
           </li>
