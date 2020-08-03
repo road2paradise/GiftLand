@@ -13,7 +13,7 @@
 }
 
 .form-control-file {
-  margin-left: 40%;
+  margin-left: 45%;
 }
 .spinner-border {
   margin-top: 20%;
@@ -35,8 +35,8 @@
     grid-row-gap: 100px;
   }
   .form-control-file {
-    margin-left: 30%;
-    width: 55% !important;
+    margin-left: 20%;
+    width: 60% !important;
   }
   .spinner-border {
     margin-top: 60%;
@@ -51,4 +51,8 @@
   margin-top: 20px;
   width: 30%;
   margin-left: 35%;
+}
+.btn {
+  width: 600px;
+  margin-top: 2%;
 }
