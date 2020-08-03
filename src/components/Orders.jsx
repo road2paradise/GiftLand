@@ -4,6 +4,7 @@ import {
   sortPhotosByTime,
   asyncForEach,
 } from "../utils/OrderUtils";
+import ScrollArrow from "./ScrollArrow";
 import Swal from "sweetalert2";
 import { Storage } from "aws-amplify";
 import Product from "./Product";
@@ -93,6 +94,7 @@ export const Orders = () => {
   }
   return (
     <div>
+      <ScrollArrow />
       {photos.length >= 1 ? (
         <>
           <h2> Total number of orders: {total}</h2>
