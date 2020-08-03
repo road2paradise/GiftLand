@@ -6,7 +6,7 @@ import {
 } from "../utils/OrderUtils";
 import Swal from "sweetalert2";
 import { Storage } from "aws-amplify";
-import ProductImage from "./Product";
+import Product from "./Product";
 
 import "./css/Orders.css";
 
@@ -101,7 +101,7 @@ export const Orders = () => {
               return (
                 <>
                   <div className="product" key={`${e.key}`}>
-                    <ProductImage
+                    <Product
                       smallImage={e.imageFetch}
                       largeImage={e.imageFetch}
                     />
