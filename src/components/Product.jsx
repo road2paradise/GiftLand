@@ -3,7 +3,7 @@ import ModalImage from "react-modal-image";
 
 import "./css/Product.css";
 
-const ProductImage = (props) => {
+const Product = (props) => {
   const { key, smallImage, largeImage } = props;
   return (
     <ModalImage
@@ -15,4 +15,4 @@ const ProductImage = (props) => {
   );
 };
 
-export default ProductImage;
+export default Product;
