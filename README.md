@@ -1,4 +1,4 @@
-# GiftLand
+# <img src="/public/logo.png">
 
 My dad runs a busy retail store and utilises apps such as Whatsapp, Viber and sometimes pen and paper to order stock and inventory. I approached this problem with a solution of a web app / phone app in mind to address the need for a central platform where employees can simply upload a photo of the stock required instead of my dad having to filter through multiple applications and papers to collate stock and inventory.
 
@@ -33,8 +33,10 @@ Currently on trial and pending feedback.
 
 ### 6.07.2020
 
-1. Working on infinite scrolling and pagination to reduce # of get requests made to AWS S3 when page is loaded - rather than loading everything in the bucket.
+Added additional features:
 
+1. Infinite scrolling - to reduce the amount of get requests if users dont need to scroll through every image.
+2. Added user feedback on number of uploaded files.
 
 ### 1.07.2020
 
@@ -50,10 +52,9 @@ Initial release and trial.
 
 # Initial Feedback
 
-1. Push notifications / SMS notifications where a link to the stored S3 image for urgent orders. 
+1. Push notifications / SMS notifications where a link to the stored S3 image for urgent orders.
 2. Interactive UI.
 3. Better feedback when users upload - maybe include a list / number of files uploaded? - Completed.
-
 
 # Authors
 

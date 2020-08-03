@@ -15,11 +15,15 @@
   border-radius: 5px;
 }
 
-.products {
+.product {
   position: relative;
 }
+.form-control-file,
+.form-control-range {
+  width: auto;
+}
 
-.products:before {
+.product:before {
   content: "";
   display: block;
   position: absolute;
@@ -29,15 +33,11 @@
   transition: height 0.5s ease-out;
   background: linear-gradient(to top, transparent 0%, black 150%);
 }
-.products:hover:before {
+.product:hover:before {
   height: 20%;
 }
 
-.products-img {
-  width: 100%;
-  height: auto;
-}
-.products:hover .delete-btn {
+.product:hover .delete-btn {
   opacity: 100;
 }
 
@@ -45,7 +45,7 @@ button:focus {
   outline: none;
 }
 @media only screen and (max-width: 800px) {
-  .products {
+  .product {
     padding: 50px 0;
   }
   .delete-btn {
@@ -53,8 +53,15 @@ button:focus {
     top: 13%;
     left: 5%;
   }
-  .products:before {
+  .product:before {
     transition: unset;
     background: unset;
   }
+}
+.swal2-title {
+  display: block !important;
+}
+h2 {
+  margin-left: 35%;
+  width: 50%;
 }

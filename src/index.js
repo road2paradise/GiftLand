@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import Amplify from "aws-amplify";
 import awsExports from "./aws-exports";
 import "bootstrap/dist/css/bootstrap.css";
+
+import "./index.css";
 Amplify.configure(awsExports);
 
 ReactDOM.render(
