@@ -18,6 +18,8 @@ This web app is hosted on AWS using AWS-Amplify to deploy resources as required.
 - AWS Cognito for secure Sign-in and Sign-up.
 - CloudFront for accelerated file upload to S3.
 
+For secure file uploads the web application is hosted on local apache servers operating on Raspberry pi's at the business and also home WAN network.
+
 ## Usage
 
 1. Firstly download and install [Node](https://nodejs.org/en/download/) on your machine.
