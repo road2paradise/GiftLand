@@ -1,6 +1,4 @@
-# <img src="/public/logo.png">
-
-# GiftLand
+# <img src="public/logo.png">
 
 ## Motivation
 
