@@ -36,19 +36,19 @@ Testing TBC.
 
 ### Adding orders and including comments.
 
- <center> <img src="public/gifs/gL5.gif?raw=true" width="400"> </center>
+<img src="public/gifs/gL5.gif?raw=true" width="400">
 
 ### Scroll to top button.
 
-<center> <img src="public/gifs/gL4.gif?raw=true" width="400"> </center>
+<img src="public/gifs/gL4.gif?raw=true" width="400">
 
 ### Infinite Scrolling.
 
-<center> <img src="public/gifs/gl3.gif?raw=true" width="400"> </center>
+<img src="public/gifs/gL3.gif?raw=true" width="400">
 
 ### Deleting images.
 
-<center> <img src="public/gifs/gL.gif?raw=true" width="400"> </center>
+<img src="public/gifs/gL.gif?raw=true" width="400">
 
 # Project Status
 
