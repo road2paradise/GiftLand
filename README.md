@@ -6,7 +6,7 @@ This project was created for my Dad who runs a busy retail store in Auckland, Ne
 
 **This was the motivation behind this project** - To create a single source of truth where all employees are able to upload orders that are needed for the store and for him to access on the go.
 
-# Basic Overview
+# Overview
 
 Giftland is a **serverless web application** that allows users to upload photos of products that need to be ordered.
 
@@ -18,7 +18,7 @@ This web app is hosted on AWS using AWS-Amplify to deploy resources as required.
 
 For secure file uploads the web application is hosted on local apache servers operating on Raspberry pi's at the business and also home WAN network.
 
-## Usage
+# Usage
 
 1. Firstly download and install [Node](https://nodejs.org/en/download/) on your machine.
 2. Clone this repo https://github.com/road2paradise/GiftLand.git
@@ -32,7 +32,7 @@ For secure file uploads the web application is hosted on local apache servers op
 
 Testing TBC.
 
-## Features
+# Features
 
 ### Adding orders and including comments.
 
@@ -54,7 +54,7 @@ Testing TBC.
 
 Deployed and used in production.
 
-### 3.08.2020
+## 3.08.2020
 
 1. Refactored code for readability and reusability.
 2. Added scroll to top button for both PC and Mobile usability.
@@ -62,20 +62,20 @@ Deployed and used in production.
 4. Added total number of orders on ordering page.
 5. ReadMe updated to reflect changes and format better.
 
-### 6.07.2020
+## 6.07.2020
 
 1. Infinite scrolling - to reduce the amount of get requests if users dont need to scroll through every image.
 2. Added user feedback on number of uploaded files.
 
-### 1.07.2020
+## 1.07.2020
 
 1. Custom user input metadata to store form data inputted by users.
 2. Changed fetch image methods.
 3. Added uploaded date.
 
-### 23.06.2020
+## 23.06.2020
 
-Initial release and trial.
+Initial release
 
 # Feedback
 
@@ -83,6 +83,10 @@ Initial release and trial.
 2. Better feedback when users upload - maybe include a list / number of files uploaded? - ✔️ Completed.
 3. Infinite scrolling - ✔️ Completed.
 4. Button to scroll back to the top on Mobile view - ✔️ Completed
+
+# Future Considerations
+
+**TBC.**
 
 # Authors
 
