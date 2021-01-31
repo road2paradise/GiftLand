@@ -1,6 +1,6 @@
 import React from "react";
-import NavCard from "../components/NavCards";
-import "./css/HomePage.css";
+import NavCard from "../../NavCards/NavCards";
+import "./HomePage.css";
 
 export class HomePage extends React.Component {
   render() {

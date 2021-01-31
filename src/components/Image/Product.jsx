@@ -1,7 +1,7 @@
 import React from "react";
 import ModalImage from "react-modal-image";
 
-import "./css/Product.css";
+import "./Product.css";
 
 const Product = (props) => {
   const { key, smallImage, largeImage } = props;

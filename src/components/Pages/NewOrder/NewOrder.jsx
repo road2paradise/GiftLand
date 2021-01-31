@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { asyncForEach } from "../utils/OrderUtils";
+import { asyncForEach } from "../../../utils/OrderUtils";
 import Swal from "sweetalert2";
 import Spinner from "react-bootstrap/Spinner";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Product from "./Product";
+import Product from "../../Image/Product";
 
 import imageCompression from "browser-image-compression";
 import { Storage } from "aws-amplify";
 
-import "./css/NewOrder.css";
+import "./NewOrder.css";
 
 export const NewOrder = () => {
   const [loading, setLoading] = useState(false);

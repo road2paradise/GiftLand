@@ -3,13 +3,13 @@ import {
   formatTime,
   sortPhotosByTime,
   asyncForEach,
-} from "../utils/OrderUtils";
-import ScrollArrow from "./ScrollArrow";
+} from "../../../utils/OrderUtils";
+import ScrollArrow from "../../ScrollArrow/ScrollArrow";
 import Swal from "sweetalert2";
 import { Storage } from "aws-amplify";
-import Product from "./Product";
+import Product from "../../Image/Product";
 
-import "./css/Orders.css";
+import "./Orders.css";
 
 export const Orders = () => {
   const [photos, setPhotos] = useState([]);

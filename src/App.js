@@ -2,10 +2,10 @@ import React from "react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { Route, Switch } from "react-router-dom";
 
-import { Header } from "./components/Header.jsx";
-import { NewOrder } from "./components/NewOrder";
-import { HomePage } from "./components/HomePage";
-import { Orders } from "./components/Orders";
+import { Header } from "./components/Header/Header";
+import { NewOrder } from "./components/Pages/NewOrder/NewOrder";
+import { HomePage } from "./components/Pages/HomePage/HomePage";
+import { Orders } from "./components/Pages/Orders/Orders";
 
 const App = () => {
   return (

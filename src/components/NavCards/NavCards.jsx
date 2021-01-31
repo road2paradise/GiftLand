@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 
-import "./css/NavCards.css";
+import "./NavCards.css";
 const NavCard = (props) => {
   const { link, header, body } = props;
   return (

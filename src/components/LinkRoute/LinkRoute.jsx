@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./css/LinkRoute.css";
+import "./LinkRoute.css";
 
 const LinkRoute = (props) => {
   const { linkTo, label, className } = props;

@@ -1,7 +1,7 @@
 import React from "react";
-import LinkRoute from "./LinkRoute";
+import LinkRoute from "../LinkRoute/LinkRoute";
 
-import "./css/Header.css";
+import "./Header.css";
 
 export const Header = () => {
   return (
